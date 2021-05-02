@@ -14,7 +14,11 @@ using namespace std;
  * @return Código de salida del programa
  */
 int main(int argc,char** argv){
-    saludo();
-    integrantes();
+    if(argc > 1){
+        saludo();
+    }
+    else{
+        integrantes();
+    }
     return 0;
 }
