@@ -10,10 +10,10 @@ funciones.o: funciones.h funciones.cpp
 
 clean: 
 		rm -fr bin/
-		rm -fr *.o main
+		rm -fr *.o main promedios.csv
 
 .PHONY: dist
 dist: clean main
 	mkdir -p bin 
 	cp -r main bin/
-	rm -fr *.main
+	rm -fr *.main 

@@ -5,5 +5,7 @@
 
 void saludo();
 void integrantes();
+std::vector<int> obtenerdatos(std::string linea);
+double promediar(std::vector<int> puntajes);
 
 #endif
