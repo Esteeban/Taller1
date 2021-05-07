@@ -6,7 +6,17 @@
 #include <vector>
 
 #include "funciones.h"
-using namespace std;
+#include <stdlib.h>
+#include <cstdlib>
+#include <vector>
+#include <sstream>
+#include <fstream>
+#include <string>
+#include <map>
+#include <vector>
+#include "estudiante.hpp"
+
+
 
 /**
  * Funciones
@@ -27,22 +37,41 @@ void integrantes(){
     std::cout<<"=================="<<std::endl;
 }
 
-double promediar(std::vector<int> puntajes){
-    double promedio = 0.0;
-    if(puntajes.size() >= 6){
-        promedio=(puntajes.at(2)+puntajes.at(3)+puntajes.at(4)+puntajes.at(5)+puntajes.at(6)+puntajes.at(7)+puntajes.at(8)+puntajes.at(9)+puntajes.at(10) )/ 8.0;
+std::map<int,double> listaPromedios(std::vector<estudiante> estudiantes) //Para obtener una lista de cada id con el promedio calculado
+{
+    std::map<int, double> lista;
+
+    for (int i=0; i<estudiantes.size();i++)
+    {
+        lista.insert(std::pair<int, double>(estudiantes.at(i).getId(),estudiantes.at(i).calcularPromedio()));
     }
-    return promedio;
+
+    return lista;
+
 }
 
-std::vector<int> obtenerdatos(std::string linea){
-    std::vector<int> arreglo;
+/**Funcion para obtener los datos del archivo
+ * y al obtener los datos se eliminan las comillas
+ */
+
+/*
+std::vector<std::string> obtenerdatos(std::string linea){
+    std::vector<std::string> arreglo;
     std::stringstream reem(linea);
     std::string item;
-
+    
+    std::string comilla="\"";
+    std::string nada="";
     while(getline(reem,item,';')){
-        int valor = atoi(item.c_str());
-        arreglo.push_back(valor);
+        std::string dato=item;
+        int pos=dato.find(comilla);
+        while(pos != -1){
+            dato.replace(pos,comilla.size(),nada);
+            pos=dato.find(comilla,pos+nada.size());     
+        }
+        arreglo.push_back(dato);
     }
     return arreglo;
 }
+*/
+

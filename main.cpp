@@ -32,12 +32,12 @@ int main(int argc,char** argv){
 
         if(lectura){
             for (std::string linea; getline(lectura,linea) ; ) {
-                std::vector<int> puntajes = obtenerdatos(linea);
-                double promedio = promediar(puntajes);
+                //std::vector<int> puntajes = obtenerdatos(linea);
+                //double promedio = promediar(puntajes);
 
-                std::string salida = std::to_string(puntajes.at(1)) + ";" + std::to_string(promedio);
-                escritura << salida << std::endl;
-                puntajes.clear();
+                //std::string salida = std::to_string(puntajes.at(1)) + ";" + std::to_string(promedio);
+                //escritura << salida << std::endl;
+                //puntajes.clear();
             }
         }
     }
