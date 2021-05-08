@@ -61,7 +61,16 @@ int main(int argc,char** argv){
 
             maximos("promediosPrueba.csv",listaEstudiantes);  //los datos de la lista ordenados se agregan los 100 maximos promedios
             
-
+            //std::cout<<listaEstudiantes.at(0).getId()<<std::endl;
+            /*for(int i=0;i<103;i++){
+                std::cout<<listaEstudiantes.at(i).getPromedio()<<listaEstudiantes.at(i).getNombre()<<std::endl;
+            }
+            listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100);
+            for(int i=0;i<100;i++){
+                std::cout<<listaEstudiantes.at(i).getPromedio()<<listaEstudiantes.at(i).getNombre()<<std::endl;
+            }
+            */
+            artistico("promediosPrueba.csv",listaEstudiantes);
         }
     }
     else{

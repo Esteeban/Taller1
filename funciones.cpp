@@ -67,5 +67,3 @@ std::vector<std::string> obtenerdatos(std::string linea){
     }
     return arreglo;
 }
-
-
