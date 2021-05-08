@@ -10,10 +10,12 @@
 
 #include "estudiante.hpp"
 
+using namespace std;
+
 estudiante::estudiante()
 {
 
-};
+}
 
 
 estudiante::estudiante(int id, std::string nombre, double leng, double ing, double mat, double ciencia, double hist, double tec, double art, double fis)
@@ -28,7 +30,7 @@ estudiante::estudiante(int id, std::string nombre, double leng, double ing, doub
     this->tecProm=tec;
     this->artProm=art;
     this->edFisProm=fis;
-};
+}
 
 
 
@@ -39,6 +41,18 @@ double estudiante::calcularPromedio()
  
 }
 
+estudianteArtistico::estudianteArtistico(){
+
+}
+
+//constructor de estudiante artistico con datos de la clase estudiante, pero no se como pasar los datos
+estudianteArtistico::estudianteArtistico(int _id,std::string _nombre,double _art,double _edFis,double _promArt):estudiante(_id,_nombre,_art,_edFis){  
+                                                    //ACA TENGO PROBLEMAS, NO SE QUE SE PASA EN ESTUDIANTE...............^
+    _promArt = (_art+_edFis)/2;
+    this->promArtistico = _promArt;
+}
+
+/*
 double estudiante::calcularPromArtistico()
 {
     double prom = (this->artProm+this->edFisProm)/2.0;
@@ -56,7 +70,7 @@ double estudiante::calcularPromTecnico()
     double prom = (this->cienciaProm+this->matProm)/2.0;
     return prom;
 }
-
+*/
 
 void maximos(std::string archivo,std::vector<estudiante> lista){
     
@@ -65,19 +79,21 @@ void maximos(std::string archivo,std::vector<estudiante> lista){
     if(lectura){
         for(int i=0 ; i<100 ; i++){
             std::string salida = std::to_string(lista.at(i).getId())+ ";" + lista.at(i).getNombre()+ ";" + std::to_string(lista.at(i).getPromedio());
-            maximos << salida << std::endl; 
-            
-        }
-        
+            maximos << salida << std::endl;      
+        }  
     }
 }
 
 void artistico(std::string archivo,std::vector<estudiante> lista){
     std::ifstream lectura(archivo);
     std::ofstream artistico("artisticos.csv");
+    std::vector<estudianteArtistico> listaArtistico(lista.size()+1);
+    listaArtistico.assign(lista.begin(),lista.end());
 
+    std::sort(listaArtistico.begin(),listaArtistico.end());
     for(int i=0;i<100;i++){
-
+        std::string salida = std::to_string(listaArtistico.at(i).getId())+ ";" + listaArtistico.at(i).getNombre()+ ";" + std::to_string(listaArtistico.at(i).getPromArtistico());
+        artistico << salida << std::endl;
     }
 
 }
