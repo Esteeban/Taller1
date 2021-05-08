@@ -30,6 +30,7 @@ int main(int argc,char** argv){
         std::ifstream lectura(archivo);
 
         std::ofstream escritura("promediosPrueba.csv");
+        std::vector<estudiante> listaEstudiantes;
         //std::vector<estudiante> lista;
         //std::map<int,double> lista2;
 
@@ -41,14 +42,17 @@ int main(int argc,char** argv){
                 std::vector<string> puntajes = obtenerdatos(linea);
                 
                 //1,12912299,nota 1......)
+                
                 estudiante estudiante(atoi(puntajes.at(0).c_str()),std::string(puntajes.at(1)),atof(puntajes.at(2).c_str()),atof(puntajes.at(3).c_str()),atof(puntajes.at(4).c_str()),atof(puntajes.at(5).c_str()),atof(puntajes.at(6).c_str()),atof(puntajes.at(7).c_str()),atof(puntajes.at(8).c_str()),atof(puntajes.at(9).c_str()));
+                listaEstudiantes.push_back(estudiante);
                 double promedio=estudiante.calcularPromedio();
                 
+
                 std::string salida = std::to_string(estudiante.getId()) + ";" + estudiante.getNombre() + ";" +std::to_string(promedio);
                 escritura << salida << std::endl;
                 puntajes.clear();
 
-                std::cout<<"Obtenemos el promedio"<<std::endl;
+                
                 
                 /*
                 lista2.insert(std::pair<int,double>(estudiante.getId(),estudiante.calcularPromedio()));
@@ -59,6 +63,8 @@ int main(int argc,char** argv){
                 escritura << salida << std::endl;
                 puntajes.clear();*/
             }
+            std::cout<<"Obtenemos el promedio"<<std::endl;
+            std::cout<<listaEstudiantes.at(2).getNombre()<<std::endl;
         }
     }
     else{
