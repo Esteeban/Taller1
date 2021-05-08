@@ -1,9 +1,13 @@
+#include <string.h>
 class estudiante{
     
     private:
         //Identificador  
         int id; 
         
+        //nombre genérico
+        std::string nombre;
+
         //Promedios
         double lengProm;
         double ingProm;
@@ -20,7 +24,7 @@ class estudiante{
         
         //Constructores
         estudiante();
-        estudiante(int id, double leng, double ing, double mat, double ciencia, double hist, double tec, double art, double fis);
+        estudiante(int id, std::string nombre, double leng, double ing, double mat, double ciencia, double hist, double tec, double art, double fis);
         
         //Funciones
         double calcularPromedio();
@@ -29,6 +33,10 @@ class estudiante{
         int getId ()
         {
             return this->id;
+        }
+
+        std::string getNombre(){
+            return this->nombre;
         }
         //Setters
 

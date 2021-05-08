@@ -2,15 +2,18 @@ CXX=g++
 CXXFLAGS=-Wall -g3
 LDFAGS=-lm
 
-main: main.cpp funciones.o 
-	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o $(LDFAGS)
+main: main.cpp funciones.o estudiante.o
+	$(CXX) $(CXXFLAGS) -o main main.cpp funciones.o estudiante.o $(LDFAGS)
 
 funciones.o: funciones.h funciones.cpp	
 	$(CXX) $(CXXFLAGS) -c funciones.cpp
 
+estudiante.o: estudiante.hpp estudiante.cpp
+	$(CXX) $(CXXFLAGS) -c estudiante.cpp
+
 clean: 
 		rm -fr bin/
-		rm -fr *.o main promedios.csv
+		rm -fr *.o main promediosPrueba.csv
 
 .PHONY: dist
 dist: clean main
