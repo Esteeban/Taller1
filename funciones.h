@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <stdlib.h>
+
 
 void saludo();
 void integrantes();

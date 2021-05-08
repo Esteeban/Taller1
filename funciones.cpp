@@ -37,6 +37,7 @@ std::map<int,double> listaPromedios(std::vector<estudiante> estudiantes) //Para 
     for (int i=0; i<estudiantes.size();i++)
     {
         lista.insert(std::pair<int, double>(estudiantes.at(i).getId(),estudiantes.at(i).calcularPromedio()));
+    
     }
 
     return lista;
