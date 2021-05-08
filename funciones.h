@@ -7,9 +7,14 @@
 #include <stdlib.h>
 #include <map>
 
+
+using namespace std;
+
+
+
 void saludo();
 void integrantes();
 std::vector<std::string> obtenerdatos(std::string linea);
-//std::map<int,double> listaPromedios(std::vector<estudiante> estudiante);
+
 
 #endif

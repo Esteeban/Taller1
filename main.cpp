@@ -11,6 +11,7 @@
 #include <fstream>
 #include <chrono>
 #include <map>
+#include <algorithm>
 
 #include "funciones.h"
 #include "estudiante.hpp"
@@ -31,8 +32,7 @@ int main(int argc,char** argv){
 
         std::ofstream escritura("promediosPrueba.csv");
         std::vector<estudiante> listaEstudiantes;
-        //std::vector<estudiante> lista;
-        //std::map<int,double> lista2;
+
 
         std::cout<<"Lectura de archivo..."<<std::endl;
 
@@ -44,27 +44,24 @@ int main(int argc,char** argv){
                 //1,12912299,nota 1......)
                 
                 estudiante estudiante(atoi(puntajes.at(0).c_str()),std::string(puntajes.at(1)),atof(puntajes.at(2).c_str()),atof(puntajes.at(3).c_str()),atof(puntajes.at(4).c_str()),atof(puntajes.at(5).c_str()),atof(puntajes.at(6).c_str()),atof(puntajes.at(7).c_str()),atof(puntajes.at(8).c_str()),atof(puntajes.at(9).c_str()));
-                listaEstudiantes.push_back(estudiante);
                 double promedio=estudiante.calcularPromedio();
-                
+                estudiante.setPromedio(promedio);
+                listaEstudiantes.push_back(estudiante);
 
                 std::string salida = std::to_string(estudiante.getId()) + ";" + estudiante.getNombre() + ";" +std::to_string(promedio);
                 escritura << salida << std::endl;
                 puntajes.clear();
 
-                
-                
-                /*
-                lista2.insert(std::pair<int,double>(estudiante.getId(),estudiante.calcularPromedio()));
-                auto it = lista2.find(2);
-                std::string salida = std::to_string(it->first) + ";" + std::to_string(it->second);
-                escritura << salida << std::endl;
-                puntajes.clear();
-                escritura << salida << std::endl;
-                puntajes.clear();*/
             }
             std::cout<<"Obtenemos el promedio"<<std::endl;
-            std::cout<<listaEstudiantes.at(2).getNombre()<<std::endl;
+            
+            std::cout<<"Se ordena"<<std::endl;
+            
+            std::sort(listaEstudiantes.begin(),listaEstudiantes.end());  //se ordena la lista
+
+            maximos("promediosPrueba.csv",listaEstudiantes);  //los datos de la lista ordenados se agregan los 100 maximos promedios
+            
+
         }
     }
     else{

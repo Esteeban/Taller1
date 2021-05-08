@@ -1,4 +1,6 @@
 #include <string.h>
+#include <vector>
+
 class estudiante{
     
     private:
@@ -17,10 +19,14 @@ class estudiante{
         double tecProm;
         double artProm;
         double edFisProm;
+        double promedio;
 
 
     public:
         
+        bool operator< (const estudiante &other) const {
+            return promedio > other.promedio;
+        }
         
         //Constructores
         estudiante();
@@ -69,6 +75,11 @@ class estudiante{
         {
             return this->edFisProm;
         }
+        double getPromedio()
+        {
+            return this->promedio;
+        }
+
         //Setters
         void setId (int id)
         {
@@ -109,7 +120,12 @@ class estudiante{
         {
             this->edFisProm = fis;
         }
-
+        void setPromedio(double prom)
+        {
+            this->promedio = prom;
+        }
        
 
 };
+
+void maximos(std::string archivo,std::vector<estudiante> lista);

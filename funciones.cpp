@@ -1,16 +1,17 @@
 #include <iostream>
 #include <vector>
-#include "funciones.h"
 #include <stdlib.h>
 #include <cstdlib>
 #include <sstream>
 #include <fstream>
 #include <string>
 #include <map>
+#include <algorithm>
 
+#include "funciones.h"
 #include "estudiante.hpp"
 
-
+using namespace std;
 
 /**
  * Funciones
@@ -30,21 +31,19 @@ void integrantes(){
     std::cout<<"-Esteban Rojas"<<std::endl;
     std::cout<<"=================="<<std::endl;
 }
-
+/*
 std::map<int,double> listaPromedios(std::vector<estudiante> estudiantes) //Para obtener una lista de cada id con el promedio calculado
 {
     std::map<int, double> lista;
-
     for (int i=0; i<estudiantes.size();i++)
     {
         lista.insert(std::pair<int, double>(estudiantes.at(i).getId(),estudiantes.at(i).calcularPromedio()));
-    
-    }
 
+    }
     return lista;
 
 }
-
+*/
 /**Funcion para obtener los datos del archivo
  * y al obtener los datos se eliminan las comillas
  */
