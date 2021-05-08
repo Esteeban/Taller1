@@ -1,12 +1,13 @@
+#include <iostream>
+#include <vector>
 #include "funciones.h"
 #include <stdlib.h>
 #include <cstdlib>
-#include <vector>
 #include <sstream>
 #include <fstream>
 #include <string>
 #include <map>
-#include <vector>
+
 #include "estudiante.hpp"
 
 
@@ -48,7 +49,7 @@ std::map<int,double> listaPromedios(std::vector<estudiante> estudiantes) //Para 
  * y al obtener los datos se eliminan las comillas
  */
 
-/*
+
 std::vector<std::string> obtenerdatos(std::string linea){
     std::vector<std::string> arreglo;
     std::stringstream reem(linea);
@@ -67,5 +68,5 @@ std::vector<std::string> obtenerdatos(std::string linea){
     }
     return arreglo;
 }
-*/
+
 
