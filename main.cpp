@@ -43,9 +43,21 @@ int main(int argc,char** argv){
                 
                 //1,12912299,nota 1......)
                 
+                //Declaración objeto estudiante
                 estudiante estudiante(atoi(puntajes.at(0).c_str()),std::string(puntajes.at(1)),atof(puntajes.at(2).c_str()),atof(puntajes.at(3).c_str()),atof(puntajes.at(4).c_str()),atof(puntajes.at(5).c_str()),atof(puntajes.at(6).c_str()),atof(puntajes.at(7).c_str()),atof(puntajes.at(8).c_str()),atof(puntajes.at(9).c_str()));
+                
                 double promedio=estudiante.calcularPromedio();
+                double promedioHumanista = estudiante.calcularPromHumanismo();
+                double promedioTecnico = estudiante.calcularPromTecnico();
+                double promedioArtistico = estudiante.calcularPromArtistico();
+
                 estudiante.setPromedio(promedio);
+                estudiante.setPromHumanismo(promedioHumanista);
+                estudiante.setPromTecnico(promedioTecnico);
+                estudiante.setPromArtistico(promedioArtistico);
+
+
+                //Añadiendo estudiante a lista de estudiantes
                 listaEstudiantes.push_back(estudiante);
 
                 std::string salida = std::to_string(estudiante.getId()) + ";" + estudiante.getNombre() + ";" +std::to_string(promedio);
@@ -54,23 +66,40 @@ int main(int argc,char** argv){
 
             }
             std::cout<<"Obtenemos el promedio"<<std::endl;
-            
             std::cout<<"Se ordena"<<std::endl;
             
-            std::sort(listaEstudiantes.begin(),listaEstudiantes.end());  //se ordena la lista
-
-            maximos("promediosPrueba.csv",listaEstudiantes);  //los datos de la lista ordenados se agregan los 100 maximos promedios
             
             //std::cout<<listaEstudiantes.at(0).getId()<<std::endl;
             /*for(int i=0;i<103;i++){
                 std::cout<<listaEstudiantes.at(i).getPromedio()<<listaEstudiantes.at(i).getNombre()<<std::endl;
             }
-            listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100);
+            */
+          
+            /*
             for(int i=0;i<100;i++){
                 std::cout<<listaEstudiantes.at(i).getPromedio()<<listaEstudiantes.at(i).getNombre()<<std::endl;
             }
             */
-            artistico("promediosPrueba.csv",listaEstudiantes);
+            
+            std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promedio > b.promedio;});//se ordena la lista por promedio
+            maximos("promediosPrueba.csv",listaEstudiantes);  //los datos de la lista ordenados se agregan los 100 maximos promedios
+            listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100); //borrando los estudiantes con mejor promedio
+
+            std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promArtistico > b.promArtistico;});  //se ordena la lista por promedio artistico
+            artistico("promediosPrueba.csv",listaEstudiantes); //Se extraen los 100 primeros
+            listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100); //borrando los estudiantes con mejores promedios artisticos
+
+            
+            std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promHumanismo > b.promHumanismo;}); //se ordena la lista por promedio humanista
+            humanismo("promediosPrueba.csv",listaEstudiantes); //Se extraen los 100 primeros
+            listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100); //borrando los estudiantes con mejores promedios artisticos
+
+            
+            
+            std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promTecnico > b.promTecnico;}); //se ordena la lista por promedio humanista
+            tecnico("promediosPrueba.csv",listaEstudiantes); //Se extraen los 100 primeros
+          
+
         }
     }
     else{
@@ -80,5 +109,7 @@ int main(int argc,char** argv){
     auto end = chrono::system_clock::now();
     chrono::duration<float,milli> duration = end - start;
     std::cout<<duration.count()<<"'ms"<<std::endl;
+   
     return EXIT_SUCCESS;
 }
+

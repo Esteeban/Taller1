@@ -40,19 +40,6 @@ double estudiante::calcularPromedio()
     return prom;
  
 }
-
-estudianteArtistico::estudianteArtistico(){
-
-}
-
-//constructor de estudiante artistico con datos de la clase estudiante, pero no se como pasar los datos
-estudianteArtistico::estudianteArtistico(int _id,std::string _nombre,double _art,double _edFis,double _promArt):estudiante(_id,_nombre,_art,_edFis){  
-                                                    //ACA TENGO PROBLEMAS, NO SE QUE SE PASA EN ESTUDIANTE...............^
-    _promArt = (_art+_edFis)/2;
-    this->promArtistico = _promArt;
-}
-
-/*
 double estudiante::calcularPromArtistico()
 {
     double prom = (this->artProm+this->edFisProm)/2.0;
@@ -70,7 +57,24 @@ double estudiante::calcularPromTecnico()
     double prom = (this->cienciaProm+this->matProm)/2.0;
     return prom;
 }
+
+
+
+/*
+
+estudianteArtistico::estudianteArtistico(){
+
+}
+
+//constructor de estudiante artistico con datos de la clase estudiante, pero no se como pasar los datos
+estudianteArtistico::estudianteArtistico(int _id,std::string _nombre,double _art,double _edFis,double _promArt):estudiante(_id,_nombre,_art,_edFis){  
+                                                    //ACA TENGO PROBLEMAS, NO SE QUE SE PASA EN ESTUDIANTE...............^
+    _promArt = (_art+_edFis)/2;
+    this->promArtistico = _promArt;
+}
 */
+
+
 
 void maximos(std::string archivo,std::vector<estudiante> lista){
     
@@ -86,16 +90,43 @@ void maximos(std::string archivo,std::vector<estudiante> lista){
 
 void artistico(std::string archivo,std::vector<estudiante> lista){
     std::ifstream lectura(archivo);
-    std::ofstream artistico("artisticos.csv");
-    std::vector<estudianteArtistico> listaArtistico(lista.size()+1);
-    listaArtistico.assign(lista.begin(),lista.end());
-
-    std::sort(listaArtistico.begin(),listaArtistico.end());
-    for(int i=0;i<100;i++){
-        std::string salida = std::to_string(listaArtistico.at(i).getId())+ ";" + listaArtistico.at(i).getNombre()+ ";" + std::to_string(listaArtistico.at(i).getPromArtistico());
-        artistico << salida << std::endl;
+    std::ofstream artistico("artistico.csv");
+    
+    if (lectura){
+        for(int i=0;i<100;i++){
+            std::string salida = std::to_string(lista.at(i).getId())+ ";" + lista.at(i).getNombre()+ ";" + std::to_string(lista.at(i).getPromArtistico());
+            artistico << salida << std::endl;
+        }
     }
 
+}
+
+void humanismo(std::string archivo,std::vector<estudiante> lista){
+    std::ifstream lectura(archivo);
+    std::ofstream artistico("humanismo.csv");
+
+    if (lectura){
+        for(int i=0;i<100;i++){
+        std::string salida = std::to_string(lista.at(i).getId())+ ";" + lista.at(i).getNombre()+ ";" + std::to_string(lista.at(i).getPromHumanismo());
+        artistico << salida << std::endl;
+        }
+    }
+    
+
+}
+
+void tecnico(std::string archivo,std::vector<estudiante> lista){
+    std::ifstream lectura(archivo);
+    std::ofstream artistico("tecnicos.csv");
+
+    if (lectura){
+         for(int i=0;i<100;i++){
+            std::string salida = std::to_string(lista.at(i).getId())+ ";" + lista.at(i).getNombre()+ ";" + std::to_string(lista.at(i).getPromTecnico());
+            artistico << salida << std::endl;
+        }
+
+    }
+   
 }
 
 

@@ -13,7 +13,7 @@ estudiante.o: estudiante.hpp estudiante.cpp
 
 clean: 
 		rm -fr bin/
-		rm -fr *.o main promediosPrueba.csv PromOrdenados.csv Máximos.csv
+		rm -fr *.o main promediosPrueba.csv PromOrdenados.csv maximos.csv artistico.csv humanismo.csv tecnicos.csv
 
 .PHONY: dist
 dist: clean main

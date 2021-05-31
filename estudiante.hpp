@@ -26,12 +26,13 @@ private:
     double tecProm;
     double artProm;
     double edFisProm;
+    
+
+public:
     double promedio;
     double promArtistico;
     double promHumanismo;
     double promTecnico;
-
-public:
     /*  bool operator< (const estudiante &other) const {
             return promHumanismo > other.promHumanismo;
         }
@@ -46,15 +47,14 @@ public:
 
     //Funciones
     double calcularPromedio();
-    /*
-        double calcularPromArtistico();
-        double calcularPromHumanismo();
-        double calcularPromTecnico();
-        */
-    bool operator<(const estudiante &other) const
-    {
-        return promedio > other.promedio;
-    }
+    double calcularPromArtistico();
+    double calcularPromHumanismo();
+    double calcularPromTecnico();
+
+    
+    
+
+
     //Getters
     int getId()
     {
@@ -96,9 +96,22 @@ public:
     {
         return this->edFisProm;
     }
+    
     double getPromedio()
     {
         return this->promedio;
+    }
+    double getPromArtistico()
+    {
+        return this->promArtistico;
+    }
+    double getPromHumanismo()
+    {
+        return this->promHumanismo;
+    }
+    double getPromTecnico()
+    {
+        return this->promTecnico;
     }
 
     //Setters
@@ -142,9 +155,22 @@ public:
     {
         this->edFisProm = fis;
     }
+    
     void setPromedio(double prom)
     {
         this->promedio = prom;
+    }
+    void setPromHumanismo(double prom)
+    {
+        this->promHumanismo = prom;
+    }
+    void setPromArtistico(double prom)
+    {
+        this->promArtistico = prom;
+    }
+     void setPromTecnico(double prom)
+    {
+        this->promTecnico = prom;
     }
 };
 

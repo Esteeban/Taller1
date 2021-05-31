@@ -67,3 +67,20 @@ std::vector<std::string> obtenerdatos(std::string linea){
     }
     return arreglo;
 }
+
+bool ordenarPorPromedio(const estudiante &a, const estudiante &b)
+{
+    return a.promedio > b.promedio;
+}
+bool ordenarPorPromedioArtistico(const estudiante &a, const estudiante &b)
+{
+    return a.promArtistico > b.promArtistico;
+}
+bool ordenarPorPromedioHumanista(const estudiante &a, const estudiante &b)
+{
+        return a.promHumanismo > b.promHumanismo;
+}
+bool ordenarPorPromedioTecnico(const estudiante &a, const estudiante &b)
+{
+    return a.promTecnico > b.promTecnico;
+}
