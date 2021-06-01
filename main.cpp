@@ -40,9 +40,7 @@ int main(int argc,char** argv){
             for (std::string linea; getline(lectura,linea) ; ) {
 
                 std::vector<string> puntajes = obtenerdatos(linea);
-                
-                //1,12912299,nota 1......)
-                
+                 
                 //Declaración objeto estudiante
                 estudiante estudiante(atoi(puntajes.at(0).c_str()),std::string(puntajes.at(1)),atof(puntajes.at(2).c_str()),atof(puntajes.at(3).c_str()),atof(puntajes.at(4).c_str()),atof(puntajes.at(5).c_str()),atof(puntajes.at(6).c_str()),atof(puntajes.at(7).c_str()),atof(puntajes.at(8).c_str()),atof(puntajes.at(9).c_str()));
                 
@@ -66,21 +64,8 @@ int main(int argc,char** argv){
 
             }
             std::cout<<"Obtenemos el promedio"<<std::endl;
-            std::cout<<"Se ordena"<<std::endl;
-            
-            
-            //std::cout<<listaEstudiantes.at(0).getId()<<std::endl;
-            /*for(int i=0;i<103;i++){
-                std::cout<<listaEstudiantes.at(i).getPromedio()<<listaEstudiantes.at(i).getNombre()<<std::endl;
-            }
-            */
-          
-            /*
-            for(int i=0;i<100;i++){
-                std::cout<<listaEstudiantes.at(i).getPromedio()<<listaEstudiantes.at(i).getNombre()<<std::endl;
-            }
-            */
-            
+            std::cout<<"Se ordenan los estudiantes"<<std::endl;
+         
             std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promedio > b.promedio;});//se ordena la lista por promedio
             maximos("promediosPrueba.csv",listaEstudiantes);  //los datos de la lista ordenados se agregan los 100 maximos promedios
             listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100); //borrando los estudiantes con mejor promedio
@@ -89,17 +74,14 @@ int main(int argc,char** argv){
             artistico("promediosPrueba.csv",listaEstudiantes); //Se extraen los 100 primeros
             listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100); //borrando los estudiantes con mejores promedios artisticos
 
-            
             std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promHumanismo > b.promHumanismo;}); //se ordena la lista por promedio humanista
             humanismo("promediosPrueba.csv",listaEstudiantes); //Se extraen los 100 primeros
             listaEstudiantes.erase(listaEstudiantes.begin(),listaEstudiantes.begin()+100); //borrando los estudiantes con mejores promedios artisticos
 
-            
-            
             std::sort(listaEstudiantes.begin(),listaEstudiantes.end(), [](const estudiante &a, const estudiante &b)-> bool {return a.promTecnico > b.promTecnico;}); //se ordena la lista por promedio humanista
             tecnico("promediosPrueba.csv",listaEstudiantes); //Se extraen los 100 primeros
           
-
+            std::cout<<"Archivos Creados Satisfactoriamente....!!!"<<std::endl<<std::endl;
         }
     }
     else{

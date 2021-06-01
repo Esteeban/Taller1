@@ -31,23 +31,6 @@ void integrantes(){
     std::cout<<"-Esteban Rojas"<<std::endl;
     std::cout<<"=================="<<std::endl;
 }
-/*
-std::map<int,double> listaPromedios(std::vector<estudiante> estudiantes) //Para obtener una lista de cada id con el promedio calculado
-{
-    std::map<int, double> lista;
-    for (int i=0; i<estudiantes.size();i++)
-    {
-        lista.insert(std::pair<int, double>(estudiantes.at(i).getId(),estudiantes.at(i).calcularPromedio()));
-
-    }
-    return lista;
-
-}
-*/
-/**Funcion para obtener los datos del archivo
- * y al obtener los datos se eliminan las comillas
- */
-
 
 std::vector<std::string> obtenerdatos(std::string linea){
     std::vector<std::string> arreglo;
@@ -68,18 +51,41 @@ std::vector<std::string> obtenerdatos(std::string linea){
     return arreglo;
 }
 
+/**
+ * @param estudiante &a
+ * @param estudiante $b
+ * @return Promedios ordenados descendentemente
+ */
 bool ordenarPorPromedio(const estudiante &a, const estudiante &b)
 {
     return a.promedio > b.promedio;
 }
+
+/**
+ * @param estudiante &a
+ * @param estudiante $b
+ * @return Promedios para Artisticos ordenados descendentemente
+ */
 bool ordenarPorPromedioArtistico(const estudiante &a, const estudiante &b)
 {
     return a.promArtistico > b.promArtistico;
 }
+
+/**
+ * @param estudiante &a
+ * @param estudiante $b
+ * @return Promedios para Humanistaordenados descendentemente
+ */
 bool ordenarPorPromedioHumanista(const estudiante &a, const estudiante &b)
 {
         return a.promHumanismo > b.promHumanismo;
 }
+
+/**
+ * @param estudiante &a
+ * @param estudiante $b
+ * @return Promedios para Tecnicos ordenados descendentemente
+ */
 bool ordenarPorPromedioTecnico(const estudiante &a, const estudiante &b)
 {
     return a.promTecnico > b.promTecnico;

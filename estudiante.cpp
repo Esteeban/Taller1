@@ -17,7 +17,6 @@ estudiante::estudiante()
 
 }
 
-
 estudiante::estudiante(int id, std::string nombre, double leng, double ing, double mat, double ciencia, double hist, double tec, double art, double fis)
 {
     this->id = id;
@@ -58,24 +57,6 @@ double estudiante::calcularPromTecnico()
     return prom;
 }
 
-
-
-/*
-
-estudianteArtistico::estudianteArtistico(){
-
-}
-
-//constructor de estudiante artistico con datos de la clase estudiante, pero no se como pasar los datos
-estudianteArtistico::estudianteArtistico(int _id,std::string _nombre,double _art,double _edFis,double _promArt):estudiante(_id,_nombre,_art,_edFis){  
-                                                    //ACA TENGO PROBLEMAS, NO SE QUE SE PASA EN ESTUDIANTE...............^
-    _promArt = (_art+_edFis)/2;
-    this->promArtistico = _promArt;
-}
-*/
-
-
-
 void maximos(std::string archivo,std::vector<estudiante> lista){
     
     std::ifstream lectura(archivo);
@@ -98,7 +79,6 @@ void artistico(std::string archivo,std::vector<estudiante> lista){
             artistico << salida << std::endl;
         }
     }
-
 }
 
 void humanismo(std::string archivo,std::vector<estudiante> lista){
@@ -111,8 +91,6 @@ void humanismo(std::string archivo,std::vector<estudiante> lista){
         artistico << salida << std::endl;
         }
     }
-    
-
 }
 
 void tecnico(std::string archivo,std::vector<estudiante> lista){
@@ -124,9 +102,7 @@ void tecnico(std::string archivo,std::vector<estudiante> lista){
             std::string salida = std::to_string(lista.at(i).getId())+ ";" + lista.at(i).getNombre()+ ";" + std::to_string(lista.at(i).getPromTecnico());
             artistico << salida << std::endl;
         }
-
-    }
-   
+    } 
 }
 
 
