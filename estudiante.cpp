@@ -53,7 +53,7 @@ double estudiante::calcularPromHumanismo()
 
 double estudiante::calcularPromTecnico()
 {
-    double prom = (this->cienciaProm+this->matProm)/2.0;
+    double prom = (this->cienciaProm+this->matProm+this->tecProm)/3.0;
     return prom;
 }
 
